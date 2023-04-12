@@ -47,6 +47,7 @@
                     <td class="blue header">Description</td>
                     <td class="blue header">Mac Address</td>
                     <td class="yellow header">Password</td>
+                    <td>#</td>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +63,13 @@
                     <td><?=$row['remark']?></strong></td>
                     <td><?=$macaddr?></strong></td>
                     <td id="p1"><?=$row['pass1']?></td>
+
+                    <td>
+                        <a href="view.php?id=<?=$row['id']?>" target="popup" class="btn primary btn sm"
+                            onclick="window.open('view.php?id=<?=$row['id']?>','popup','width=600,height=600'); return false;">
+                            View
+                        </a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -74,10 +82,12 @@
 <script>
 $(document).ready(function() {
     $('#tbl_data').DataTable({
-        order: [[1, 'asc']],
+        order: [
+            [1, 'asc']
+        ],
         rowGroup: {
-            dataSrc: function ( row ) {
-                return "ลูกค้า: "+row[1]
+            dataSrc: function(row) {
+                return "ลูกค้า: " + row[1]
             }
         }
     });
