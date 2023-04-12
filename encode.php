@@ -82,6 +82,7 @@
                 <p>IP Address</p>
                 <input class="xlarge txtip" name="ip" type="text" style="width: 400px;"
                     placeholder="กรุณาระบุไอพี">
+                <p style="color: red;" id="msg"></p>
                 <br>
                 <p>Description</p>
                 <textarea class="xxlarge" id="textarea" name="remark" placeholder="กรุณาระบุรายละเอียดเพิ่มเติม" style="width: 400px;" rows="7"></textarea>
@@ -144,7 +145,11 @@ function RefreshPage(){
             success: function(data) {
               if (data.type == 'error') {
                 $(".txtip").val("");
+                $('#msg').text("Ip Address ซ้ำกับฐานข้อมูลก่อนหน้านี้");
                 $(".txtip").css("background-color","#EC7063");
+              }else{
+                $('#msg').text("");
+                $(".txtip").css("background-color","#FFF");
               }
             }  
         });
