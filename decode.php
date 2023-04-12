@@ -1,14 +1,5 @@
 <?php
-    require_once 'db.php';
-  function generateRandomString($length = 1) {
-      $characters = '!@#$%^&*()+{}?';
-      $charactersLength = strlen($characters);
-      $randomString = '';
-      for ($i = 0; $i < $length; $i++) {
-          $randomString .= $characters[random_int(0, $charactersLength - 1)];
-      }
-      return $randomString;
-  }
+  require_once 'db.php';
   if (isset($_POST['btnsave'])){
     $strPass = trim($_POST['strpassword']);
     $zip_check = substr($strPass, 0, 8);

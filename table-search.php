@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="vendor/jquery.dataTables.min.css">
     <script src="vendor/prettify.js"></script>
     <link rel="stylesheet" href="vendor/animation.css">
+    <link rel="stylesheet" href="vendor/table/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="vendor/table/rowGroup.dataTables.min.css">
     <style>
     body {
         color: black;
@@ -38,6 +40,11 @@
         <table class="zebra-striped tablesorter" style="margin-top: 50px;" id="tbl_data">
             <thead>
                 <tr>
+                    <td class="blue header">Device Name</td>
+                    <td class="blue header">Customer</td>
+                    <td class="blue header">Site</td>
+                    <td class="blue header">IP Address</td>
+                    <td class="blue header">Description</td>
                     <td class="blue header">Mac Address</td>
                     <td class="yellow header">Password</td>
                 </tr>
@@ -48,7 +55,12 @@
                         $macaddr = base64_decode(substr($row['pass2'],0,-2));
                 ?>
                 <tr>
-                    <td><strong><?=$macaddr?></strong></td>
+                    <td><?=$row['device_name']?></strong></td>
+                    <td><?=$row['customer']?></strong></td>
+                    <td><?=$row['site']?></strong></td>
+                    <td><?=$row['ip']?></strong></td>
+                    <td><?=$row['remark']?></strong></td>
+                    <td><?=$macaddr?></strong></td>
                     <td id="p1"><?=$row['pass1']?></td>
                 </tr>
                 <?php } ?>
@@ -57,11 +69,18 @@
     </div>
 </body>
 <script src="vendor/jquery-3.5.1.js"></script>
-<script src="vendor/jquery.dataTables.min.js"></script>
-<script src="vendor/jquery.tablesorter.min.js"></script>
+<script src="vendor/table/jquery.dataTables.min.js"></script>
+<script src="vendor/table/dataTables.rowGroup.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('#tbl_data').DataTable();
+    $('#tbl_data').DataTable({
+        order: [[1, 'asc']],
+        rowGroup: {
+            dataSrc: function ( row ) {
+                return "ลูกค้า: "+row[1]
+            }
+        }
+    });
 });
 </script>
 

@@ -1,25 +1,31 @@
 <?php
+  if (!isset($_SESSION)){ session_start(); }
   require_once 'db.php';
   $msg = "";
-  function generateRandomString($length = 1) {
-      $characters = '!@#$%^&*()+{}?';
-      $charactersLength = strlen($characters);
-      $randomString = '';
-      for ($i = 0; $i < $length; $i++) {
-          $randomString .= $characters[random_int(0, $charactersLength - 1)];
-      }
-      return $randomString;
-  }
   if (isset($_POST['btnsave'])){
     $strPass = trim($_POST['strpassword']);
-    $zip1 = base64_encode($strPass).generateRandomString(2);
+    $zip1 = base64_encode($strPass).'!#';
     $sql = "SELECT * FROM tbl_password WHERE `raw` = '".substr(base64_encode($strPass), 0, 8)."'";
     $query = mysqli_query($conn, $sql);
     $count =  mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
     if ($count == 0){
-      $zip2 = substr(base64_encode($strPass), 0, 8).generateRandomString(2);
-      mysqli_query($conn, "INSERT INTO tbl_password SET pass1 = '$zip2', pass2 = '$zip1', `raw` = '".substr(base64_encode($strPass), 0, 8)."'");
+      $zip2 = substr(base64_encode($strPass), 0, 8).'!#';
+      $sql = "
+            INSERT INTO
+                tbl_password
+            SET
+                device_name = '".$_POST['device_name']."',
+                customer = '".$_POST['customer']."',
+                site = '".$_POST['site']."',
+                ip = '".$_POST['ip']."',
+                remark = '".$_POST['remark']."',
+                pass1 = '$zip2',
+                pass2 = '$zip1',
+                `raw` = '".substr(base64_encode($strPass), 0, 8)."',
+                gen_by = '".$_SESSION['Username']."'
+      ";
+      mysqli_query($conn, $sql);
     }else{
       $msg = "รหัสผ่านนี้ซ้ำกับที่เคยออกไปแล้ว";
       $zip2 = $row['pass1'];
@@ -57,9 +63,28 @@
     <div class="container fade" style="margin-top: 50px;">
         <form action="" method="POST" autocomplete="off">
             <div class="input">
-                <p>Mac Address <b style="color: red;">เช่น 062696DABAED</b></p>
+                <p> <i style="color: red;">*</i> Mac Address <b style="color: red;">เช่น 062696DABAED</b></p>
                 <input class="xlarge txtpass" name="strpassword" type="text" style="width: 400px;"
                     placeholder="กรุณาระบุและเช็คให้ถูกต้อง">
+                <br>
+                <p>Device Name</p>
+                <input class="xlarge device_name" name="device_name" type="text" style="width: 400px;"
+                    placeholder="กรุณาระบุชื่ออุปกรณ์">
+                <br>
+                <p>Customer</p>
+                <input class="xlarge customer" name="customer" type="text" style="width: 400px;"
+                    placeholder="กรุณาระบุลูกค้า">
+                <br>
+                <p>Site</p>
+                <input class="xlarge site" name="site" type="text" style="width: 400px;"
+                    placeholder="กรุณาระบุสาขา">
+                <br>
+                <p>IP Address</p>
+                <input class="xlarge txtip" name="ip" type="text" style="width: 400px;"
+                    placeholder="กรุณาระบุไอพี">
+                <br>
+                <p>Description</p>
+                <textarea class="xxlarge" id="textarea" name="remark" placeholder="กรุณาระบุรายละเอียดเพิ่มเติม" style="width: 400px;" rows="7"></textarea>
                 <br><br>
                 <button type="submit" class="btn primary" name="btnsave">เข้ารหัส</button>
                 <button type="button" class="btn default" onclick="RefreshPage();">รีเฟรช</button>
@@ -106,5 +131,23 @@ function RefreshPage(){
         this.value=this.value.replace(/[\*\^\':,\!]/g, "");
     });
   });
+</script>
+<script>
+  $(".txtip").change(function(e) {
+        e.preventDefault();
+        var params = {ip: $(this).val()}
+        $.ajax({
+            url: "./ip_dup.php",
+            type: "POST",
+            data: params,
+            dataType: 'JSON',
+            success: function(data) {
+              if (data.type == 'error') {
+                $(".txtip").val("");
+                $(".txtip").css("background-color","#EC7063");
+              }
+            }  
+        });
+    });
 </script>
 </html>
