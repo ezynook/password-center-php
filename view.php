@@ -1,13 +1,3 @@
-<?php
-    require_once 'db.php';
-    if (isset($_GET['id'])){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM tbl_password WHERE id = ".$id;
-        $query = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($query);
-    }
-$conn->close();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -33,7 +23,9 @@ $conn->close();
     }
     </style>
 </head>
-
+<code>
+    <?php require 'include/view.inc.php'; ?>
+</code>
 <body>
     <div class="container" style="margin-top: 20px;">
         <div class="alert-message warning">

@@ -1,4 +1,0 @@
-id	int
-pass1	varchar(10)
-pass2	varchar(100)
-raw	varchar(100)

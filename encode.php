@@ -1,37 +1,3 @@
-<?php
-  if (!isset($_SESSION)){ session_start(); }
-  require_once 'db.php';
-  $msg = "";
-  if (isset($_POST['btnsave'])){
-    $strPass = trim($_POST['strpassword']);
-    $zip1 = base64_encode($strPass).'!#';
-    $sql = "SELECT * FROM tbl_password WHERE `raw` = '".substr(base64_encode($strPass), 0, 8)."'";
-    $query = mysqli_query($conn, $sql);
-    $count =  mysqli_num_rows($query);
-    $row = mysqli_fetch_assoc($query);
-    if ($count == 0){
-      $zip2 = substr(base64_encode($strPass), 0, 8).'!#';
-      $sql = "
-            INSERT INTO
-                tbl_password
-            SET
-                device_name = '".$_POST['device_name']."',
-                customer = '".$_POST['customer']."',
-                site = '".$_POST['site']."',
-                ip = '".$_POST['ip']."',
-                remark = '".$_POST['remark']."',
-                pass1 = '$zip2',
-                pass2 = '$zip1',
-                `raw` = '".substr(base64_encode($strPass), 0, 8)."',
-                gen_by = '".$_SESSION['Username']."'
-      ";
-      mysqli_query($conn, $sql);
-    }else{
-      $msg = "รหัสผ่านนี้ซ้ำกับที่เคยออกไปแล้ว";
-      $zip2 = $row['pass1'];
-    }
-  }
-?>
 <!DOCTYPE html>
 <html>
 
@@ -57,7 +23,9 @@
       }
   </style>
 </head>
-
+<code>
+  <?php require 'include/encode.inc.php'; ?>
+</code>
 <body>
     <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">

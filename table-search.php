@@ -20,16 +20,13 @@
     </style>
 </head>
 <code>
-<?php
-    require_once 'db.php';
-    $sql = "SELECT * FROM tbl_password ORDER BY id ASC";
-    $query = mysqli_query($conn, $sql);
-?>
+    <?php require 'include/table-search.inc.php'; ?>
 </code>
 
 <body>
     <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">
+        <?php if(isset($alert)){echo $alert;} ?>
         <div class="alert-message warning">
             <p><strong>รายการด้านล่างนี้เป็นรหัสผ่านและแมคแอดเดรสที่เคยถูก Generate และบันทึกไว้แล้วในฐานข้อมูล</strong>
             </p>

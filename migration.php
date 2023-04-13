@@ -4,12 +4,18 @@
     mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS genpassword");
     mysqli_query($conn, "USE genpassword");
     mysqli_query($conn, "
-        CREATE TABLE `tbl_password` (
-            `id` int(11) NOT NULL,
-            `pass1` varchar(10) NOT NULL,
-            `pass2` varchar(100) NOT NULL,
-            `raw` varchar(100) NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+    CREATE TABLE `tbl_password` (
+        `id` int(11) NOT NULL,
+        `device_name` varchar(100) NOT NULL,
+        `customer` varchar(100) NOT NULL,
+        `site` varchar(100) NOT NULL,
+        `ip` varchar(50) NOT NULL,
+        `remark` text NOT NULL,
+        `pass1` varchar(10) NOT NULL,
+        `pass2` varchar(100) NOT NULL,
+        `raw` varchar(100) NOT NULL,
+        `gen_by` varchar(50) NOT NULL
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ");
     mysqli_query($conn, "ALTER TABLE `tbl_password` ADD PRIMARY KEY (`id`)");
     mysqli_query($conn, "ALTER TABLE `tbl_password` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1");
