@@ -11,7 +11,7 @@
             </ul>
             <ul class="nav secondary-nav">
                 <li class="menu">
-                    <a href="#">v.1.0.2</a>
+                    <a href="#">v.20230413</a>
                 </li>
             </ul>
         </div>

@@ -2,6 +2,7 @@
   if (!isset($_SESSION)){ session_start(); }
   require_once 'db.php';
   $msg = "";
+  $msg2 = "";
   $zip1 = null;
   $strPass = null;
   $zip2 = null;
@@ -45,8 +46,20 @@
                 gen_by = '".$username."'
       ";
       $query = mysqli_query($conn, $sql);
-      if (!$query){
-        echo "Insert Data failure";
+      if ($query){
+        $msg2 = '
+          <div class="alert-message success">
+            <a class="close" href="#">×</a>
+            <p><strong>Success</strong> เข้ารหัสผ่านสำเร็จแล้ว</p>
+          </div>
+        ';
+      }else{
+        $msg2 = '
+          <div class="alert-message danger">
+            <a class="close" href="#">×</a>
+            <p><strong>Failure</strong> เข้ารหัสผ่านไม่สำเร็จ</p>
+          </div>
+        ';
       }
     }else{
       $msg = "รหัสผ่านนี้ซ้ำกับที่เคยออกไปแล้ว";
