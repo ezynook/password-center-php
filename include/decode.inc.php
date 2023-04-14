@@ -2,8 +2,9 @@
   if (!isset($_SESSION)){ session_start(); }
   require_once 'db.php';
   if (isset($_POST['btnsave'])){
+    $length = getRule();
     $strPass = trim($_POST['strpassword']);
-    $zip_check = substr($strPass, 0, 8);
+    $zip_check = substr($strPass, 0, $length);
     $sql = "SELECT * FROM tbl_password WHERE `raw` = '$zip_check'";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($query);

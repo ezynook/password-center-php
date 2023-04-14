@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 12, 2023 at 12:07 PM
+-- Generation Time: Apr 14, 2023 at 10:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -24,6 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_config`
+--
+
+CREATE TABLE `tbl_config` (
+  `id` int(2) NOT NULL,
+  `length` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_config`
+--
+
+INSERT INTO `tbl_config` (`id`, `length`) VALUES
+(1, 8);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_password`
 --
 
@@ -34,22 +52,21 @@ CREATE TABLE `tbl_password` (
   `site` varchar(100) NOT NULL,
   `ip` varchar(50) NOT NULL,
   `remark` text NOT NULL,
-  `pass1` varchar(10) NOT NULL,
+  `pass1` varchar(50) NOT NULL,
   `pass2` varchar(100) NOT NULL,
   `raw` varchar(100) NOT NULL,
   `gen_by` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_password`
---
-
-INSERT INTO `tbl_password` (`id`, `device_name`, `customer`, `site`, `ip`, `remark`, `pass1`, `pass2`, `raw`, `gen_by`) VALUES
-(1, 'test', 'test', 'test', '192.168.10.1', 'A: 556730cdfgg\r\nB: 324-14935-932\r\ntest: ใช่', 'MDYyNjk2!#', 'MDYyNjk2REFCQUVE!#', 'MDYyNjk2', 'nook');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_config`
+--
+ALTER TABLE `tbl_config`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_password`
@@ -63,10 +80,16 @@ ALTER TABLE `tbl_password`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_config`
+--
+ALTER TABLE `tbl_config`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_password`
 --
 ALTER TABLE `tbl_password`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,7 @@
 <?php
   if (!isset($_SESSION)){ session_start(); }
   require_once 'db.php';
+  $length = getRule();
   $msg = "";
   $msg2 = "";
   $zip1 = null;
@@ -20,12 +21,12 @@
   if (isset($_POST['btnsave'])){
     $strPass = trim($_POST['strpassword']);
     $zip1 = base64_encode($strPass).'!#';
-    $sql = "SELECT * FROM tbl_password WHERE `raw` = '".substr(base64_encode($strPass), 0, 8)."'";
+    $sql = "SELECT * FROM tbl_password WHERE `raw` = '".substr(base64_encode($strPass), 0, $length)."'";
     $query = mysqli_query($conn, $sql);
     $count =  mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
     if ($count == 0){
-      $zip2 = substr(base64_encode($strPass), 0, 8).'!#';
+      $zip2 = substr(base64_encode($strPass), 0, $length).'!#';
       $strCustomer = trim($_POST['customer']);
       $strSite = trim($_POST['site']);
       $strRemark = trim($_POST['remark']);
@@ -42,7 +43,7 @@
                 remark = '".$strRemark."',
                 pass1 = '$zip2',
                 pass2 = '$zip1',
-                `raw` = '".substr(base64_encode($strPass), 0, 8)."',
+                `raw` = '".substr(base64_encode($strPass), 0, $length)."',
                 gen_by = '".$username."'
       ";
       $query = mysqli_query($conn, $sql);

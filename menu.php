@@ -7,6 +7,7 @@
                 <?php if (isset($_SESSION['Username'])){ ?>
                     <li class="<?php if ($_GET['menu'] == 'encode'){echo 'active';}else{ echo '';} ?>"><a href="encode.php?menu=encode">เข้ารหัส</a></li>
                     <li class="<?php if ($_GET['menu'] == 'decode'){echo 'active';}else{ echo '';} ?>"><a href="decode.php?menu=decode">ถอดรหัส</a></li>
+                    <li class="<?php if ($_GET['menu'] == 'setting'){echo 'active';}else{ echo '';} ?>"><a href="setting.php?menu=setting">ตั้งค่า</a></li>
                 <?php } ?>
             </ul>
             <ul class="nav secondary-nav">
