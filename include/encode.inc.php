@@ -13,8 +13,8 @@
   $strRemark = null;
   $strIp = null;
   $username = null;
-  if (isset($_SESSION['Username'])){
-    $username = $_SESSION['Username'].' at: '.date('Y-m-d H:i:s');
+  if (isset($_SESSION['username'])){
+    $username = $_SESSION['username'].' at: '.date('Y-m-d H:i:s');
   }else{
     $username = 'Guest'.' at: '.date('Y-m-d H:i:s');
   }

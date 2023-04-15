@@ -8,6 +8,7 @@
         $PASSWD = '';
     }
     $conn = mysqli_connect($HOST, 'root', $PASSWD, 'genpassword');
+    $conn2 = mysqli_connect($HOST, 'root', $PASSWD, 'da_db');
     mysqli_query($conn,"SET NAMES 'UTF8'");
 
     function getRule(){

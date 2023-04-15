@@ -1,7 +1,7 @@
 <?php
     if (!isset($_SESSION)){ session_start(); }
-    echo $_SESSION['Username'];
-    if (!isset($_SESSION['Username'])){
+    echo $_SESSION['username'];
+    if (!isset($_SESSION['username'])){
         $alert =  '
             <div class="alert-message block-message error">
                 <a class="close" href="#">×</a>
