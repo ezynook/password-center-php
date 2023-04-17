@@ -51,7 +51,7 @@
             <label for="xlInput">จำนวนหลักการเข้ารหัส</label>
             <div class="input">
                 <input class="xlarge" name="rule" size="30" type="text" value="<?=getRule()?>">
-                <button type="submit" class="btn primary" name="btnsave">Save Changes</button>
+                <button type="submit" class="btn primary" name="btnsave"><i class="fas fa-save"></i> Save Changes</button>
             </div>
     </div>
     </form>

@@ -37,14 +37,14 @@
                 <input class="xlarge" name="strpassword" type="text" style="width: 400px;"
                     placeholder="กรุณาระบุและเช็คให้ถูกต้อง">
                 <br><br>
-                <button type="submit" class="btn success" name="btnsave">ถอดรหัส</button>
-                <button type="button" class="btn default" onclick="RefreshPage();">รีเฟรช</button>
+                <button type="submit" class="btn success" name="btnsave"><i class="fas fa-lock"></i> ถอดรหัส</button>
+                <button type="button" class="btn default" onclick="RefreshPage();"><i class="fas fa-sync-alt"></i> รีเฟรช</button>
             </div>
         </form>
         <hr>
         <div align="center">
           <code id="p1"><?php if (isset($unzip)){echo $unzip;}; ?></code>
-          <button class="btncopy btn info <?php if (empty($unzip)){echo 'disabled';}; ?>" onclick="copyToClipboard('#p1')">คัดลอกรหัส</button>
+          <button class="btncopy btn info <?php if (empty($unzip)){echo 'disabled';}; ?>" onclick="copyToClipboard('#p1')"><i class="fas fa-copy"></i> คัดลอกรหัส</button>
         </div>
     </div>
     <br>

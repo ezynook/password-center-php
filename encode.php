@@ -59,8 +59,8 @@
                 <textarea class="xxlarge" id="textarea" name="remark" placeholder="กรุณาระบุรายละเอียดเพิ่มเติม"
                     style="width: 400px;" rows="7"></textarea>
                 <br><br>
-                <button type="submit" class="btn primary" name="btnsave">เข้ารหัส</button>
-                <button type="button" class="btn default" onclick="RefreshPage();">รีเฟรช</button>
+                <button type="submit" class="btn primary" name="btnsave"><i class="fas fa-lock"></i> เข้ารหัส</button>
+                <button type="button" class="btn default" onclick="RefreshPage();"><i class="fas fa-sync-alt"></i> รีเฟรช</button>
             </div>
         </form>
         <hr>
@@ -68,7 +68,7 @@
             <code><?php if(!empty($msg)){echo $msg;} ?></code> <br><br>
             <code id="p1"><?php if (isset($zip2)){echo $zip2;}; ?></code>
             <button class="btncopy btn success <?php if (empty($zip2)){echo 'disabled';}; ?>"
-                onclick="copyToClipboard('#p1')">คัดลอกรหัส</button>
+                onclick="copyToClipboard('#p1')"><i class="fas fa-copy"></i> คัดลอกรหัส</button>
         </div>
     </div>
     <br>

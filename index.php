@@ -13,6 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"> </script>
     <script src="vendor/prettify.js"></script>
     <link rel="stylesheet" href="vendor/animation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <style>
     code {
         font-family: Consolas, "courier new";
@@ -21,6 +25,9 @@
         padding: 2px;
         font-size: 25px;
         font-weight: bold;
+    }
+    * {
+        font-family: 'Noto Sans Thai', sans-serif;
     }
     </style>
 </head>
@@ -32,22 +39,24 @@
     <div class="topbar">
         <div class="fill">
             <div class="container">
-                <h3><a href="#">Login</a></h3>
+                <h3><a href="#"><i class="fas fa-key" style="font-size: 30px;"></i></a></h3>
             </div>
         </div>
     </div>
-    <div class="container fade" style="margin-top: 50px;" align="center">
+    <div class="container fade" style="margin-top: 50px;">
+        <div class="page-header">
+            <h1>Login to Password Manager <br><small>( ใช้รหัสผ่านเดียวกับ Web Engineer )</small></h1>
+        </div>
         <form action="" method="post" id="form1">
-            <div class="well" style="padding: 19px 19px;">
-                <label for="Passcode"></label>
-                <br>
-                <div class="clearfix info">
-                    <div class="input">
+            <div class="clearfix">
+                <label for="prependedInput">Passcode</label>
+                <div class="input">
+                    <div class="input-prepend">
+                        <span class="add-on">6 Digit</span>
                         <input class="xlarge success" id="txtpass" name="passcode" size="30" type="password"
                             placeholder="XXXXXX">
-                        <span class="help-inline">ใช้รหัสเดียวกับ Engineer App</span>
+                        <input type="hidden" name="btnsave" value="1">
                     </div>
-                    <input type="hidden" name="btnsave" value="1">
                 </div>
             </div>
         </form>
