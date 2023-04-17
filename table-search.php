@@ -64,7 +64,7 @@
                     <td>
                         <a href="view.php?id=<?=$row['id']?>" target="popup" class="btn primary btn sm"
                             onclick="window.open('view.php?id=<?=$row['id']?>','popup','width=600,height=600'); return false;">
-                            View
+                            <i class="fas fa-eye"></i> View
                         </a>
                     </td>
                 </tr>
