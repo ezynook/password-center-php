@@ -26,6 +26,7 @@
         font-size: 25px;
         font-weight: bold;
     }
+
     * {
         font-family: 'Noto Sans Thai', sans-serif;
     }
@@ -39,11 +40,12 @@
     <div class="topbar">
         <div class="fill">
             <div class="container">
-                <h3><a href="#"><i class="fas fa-key" style="font-size: 30px;"></i></a></h3>
+                <h3><a href="#"><i class="fas fa-key" style="font-size: 30px;"></i> Password Manager Login</a></h3>
             </div>
         </div>
     </div>
     <div class="container fade" style="margin-top: 50px;">
+        <?php if (isset($msg)){ echo $msg; } ?>
         <div class="page-header">
             <h1>Login to Password Manager <br><small>( ใช้รหัสผ่านเดียวกับ Web Engineer )</small></h1>
         </div>

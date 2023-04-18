@@ -33,7 +33,7 @@
     <div class="container fade" style="margin-top: 50px;">
         <form action="" method="POST" autocomplete="off">
             <div class="input">
-                <p>รหัสผ่าน <b style="color: red;">( <?=getRule();?> หลัก )</b></p>
+                <p>รหัสผ่าน <b style="color: red;">( <?=getRule();?> หลัก รวมกับอักษรพิเศษอีก 2 หลัก)</b></p>
                 <input class="xlarge" name="strpassword" type="text" style="width: 400px;"
                     placeholder="กรุณาระบุและเช็คให้ถูกต้อง">
                 <br><br>

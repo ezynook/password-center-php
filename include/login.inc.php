@@ -1,6 +1,7 @@
 <?php
     session_start();
     require 'db.php';
+    $msg = '';
     if (isset($_POST['btnsave'])){
         $sql = "
                 SELECT
@@ -18,10 +19,11 @@
                 $_SESSION['username'] = $row['username'];
                 header("location: table-search.php?menu=table-search");
             }else{
-                echo "<script>
-                        alert('Passcode error')
-                        window.location.href = 'index.php'
-                    </script>";
+                $msg = '
+                    <div class="alert-message error">
+                        <p><strong>Error!</strong> ชื่อผู้ใช้หรือรหัสผ่านผิดพลาด</p>
+                    </div>
+                ';
             }
         }
     }
