@@ -1,25 +1,28 @@
 version: '3'
+
 services:
+    myweb:
+        build: ./php/
+        container_name: myweb
+        restart: always
+        ports:
+          - 80:80
+        volumes:
+          - ./php/src:/var/www/html
 
-  php:
-    image: php7.4-apache
-    container_name: myweb
-    restart: always
-    links:
-        - "db:db"
-    volumes:
-      - /path/in/project:/var/www/html
-    ports:
-      - 80:80
+    mydb:
+        build: ./mysql/
+        container_name: mydb
+        ports:
+          - 3306:3306
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_USER=genpassword
+          - MYSQL_PASSWORD=genpassword
+          - MYSQL_DATABASE=genpassword
+        volumes:
+          - mydb_data:/var/lib/mysql
 
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    container_name: mydatabase
-    restart: always
-    ports:
-      - 3306:3306
-    volumes:
-      - "./genpassword.sql:/docker-entrypoint-initdb.d/1.sql"
-    environment:
-      - MYSQL_ROOT_PASSWORD: root
+volumes:
+  mydb_data:

@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if (!isset($_SESSION)){
+        session_start();
+    }
+    error_reporting(0);
     require 'db.php';
     $msg = '';
     if (isset($_POST['btnsave'])){
@@ -11,7 +14,7 @@
                 WHERE
                        passcode = '".base64_encode($_POST['passcode'])."'
         ";
-        $query = mysqli_query($conn2, $sql);
+        $query = mysqli_query($conn, $sql);
         if ($query){
             $count = mysqli_num_rows($query);
             if ($count > 0){

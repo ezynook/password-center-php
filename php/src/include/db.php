@@ -1,14 +1,5 @@
 <?php
-    $os = PHP_OS;
-    if ($os == 'Linux'){
-        $HOST = 'mydatabase';
-        $PASSWD = '2909';
-    }else{
-        $HOST = 'localhost';
-        $PASSWD = '';
-    }
-    $conn = mysqli_connect($HOST, 'root', $PASSWD, 'genpassword');
-    $conn2 = mysqli_connect($HOST, 'root', $PASSWD, 'da_db');
+    $conn = mysqli_connect('mydb', 'genpassword', 'genpassword', 'genpassword');
     mysqli_query($conn,"SET NAMES 'UTF8'");
 
     function getRule(){

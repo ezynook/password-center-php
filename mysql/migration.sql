@@ -58,6 +58,22 @@ CREATE TABLE `tbl_password` (
   `gen_by` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_reg` varchar(30) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `passcode` varchar(100) DEFAULT NULL,
+  `rule` int(11) DEFAULT NULL,
+  `perpage` int(3) NOT NULL,
+  `theme` int(11) DEFAULT 1,
+  PRIMARY KEY (`id`,`username`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+
+INSERT INTO `users` (`id`, `date_reg`, `name`, `username`, `password`, `passcode`, `rule`, `perpage`, `theme`) VALUES (1, '20/1/1900', 'Pasit', 'nook', 'b5b03f06271f8917685d14cea7c6c50a', 'MDkwOTM2', 0, 10, 6);
+
 --
 -- Indexes for dumped tables
 --
