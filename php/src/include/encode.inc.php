@@ -21,7 +21,7 @@
   if (isset($_POST['btnsave'])){
     $strPass = trim($_POST['strpassword']);
     $zip1 = base64_encode($strPass).'!#';
-    $sql = "SELECT * FROM tbl_password WHERE `raw` = '".substr(base64_encode($strPass), 0, $length)."'";
+    $sql = "SELECT * FROM tbl_password WHERE `pass2` = '".$zip1."'";
     $query = mysqli_query($conn, $sql);
     $count =  mysqli_num_rows($query);
     $row = mysqli_fetch_assoc($query);
