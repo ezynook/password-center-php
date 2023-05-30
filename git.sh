@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#Remove DS
 find . -name '.DS_Store' -delete
 
 git add .
