@@ -24,7 +24,7 @@
             </ul>
             <ul class="nav secondary-nav">
                 <li class="menu">
-                    <a href="#"><i class="fas fa-code-branch"></i> v.230417</a>
+                    <a href="#"><i class="fas fa-code-branch"></i> v.230417 | <?php echo $_SESSION['username']; ?></a>
                 </li>
             </ul>
         </div>
