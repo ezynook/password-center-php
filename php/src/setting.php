@@ -53,8 +53,12 @@
             <div class="input">
                 <input class="xlarge" name="rule" size="30" type="text" value="<?=getRule()?>">
                 <button type="submit" class="btn primary" name="btnsave"><i class="fas fa-save"></i> Save Changes</button>
-                <a href="http://<?=$URL?>/adminer.php?server=mydatabase&username=nam&db=genpassword&select=tbl_password"
+                <!-- <a href="http://<?//$URL?>/adminer.php?server=mydatabase&username=nam&db=genpassword&select=tbl_password"
+                    target="_blank" class="btn danger">จัดการข้อมูล</a> -->
+                <?php if ($_SESSION['rule'] == 0){ ?>
+                <a href="admin/index.php"
                     target="_blank" class="btn danger">จัดการข้อมูล</a>
+                <?php } ?>
             </div>
     </div>
     </form>

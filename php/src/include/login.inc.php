@@ -2,6 +2,10 @@
     if (!isset($_SESSION)){
         session_start();
     }
+    if (isset($_SESSION['username']) && isset($_SESSION['rule'])){
+        header("location: table-search.php?menu=table-search");
+        exit;
+    }
     error_reporting(0);
     require 'db.php';
     $msg = '';
@@ -20,6 +24,7 @@
             if ($count > 0){
                 $row = mysqli_fetch_assoc($query);
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['rule'] = $row['rule'];
                 header("location: table-search.php?menu=table-search");
             }else{
                 $msg = '
