@@ -10,6 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <style>
+        .mydiv{
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+        td {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <code>
     <?php
@@ -33,8 +42,8 @@
     <a class="navbar-brand" href="#">Password Center (Admin)</a>
   </div>
 </nav>
-    <div class="container mt-5">
-        <table class="table table-sm table-stripped table-hover table-bordered" id="myTable">
+    <div class="container mt-5 mydiv">
+        <table class="table table-sm" id="myTable">
             <thead>
                 <tr>
                     <td>Device Name</td>
