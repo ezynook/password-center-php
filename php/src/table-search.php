@@ -17,6 +17,14 @@
     body {
         color: black;
     }
+    .badge {
+          background-color: #CCC;
+          font-weight: bold;
+          color: black;
+          padding: 4px 8px;
+          text-align: center;
+          border-radius: 5px;
+        }
     </style>
 </head>
 <code>
@@ -59,7 +67,9 @@
                     <td><?=$row['ip']?></strong></td>
                     <td><?=$row['remark']?></strong></td>
                     <td><?=$macaddr?></strong></td>
-                    <td id="p1"><?=$row['pass1']?></td>
+                    <td>
+                        <span class="badge"><?=$row['pass1']?></span>
+                    </td>
 
                     <td>
                         <a href="view.php?id=<?=$row['id']?>" target="popup" class="btn primary btn sm"
@@ -71,6 +81,8 @@
                 <?php } ?>
             </tbody>
         </table>
+        <p></p>
+        <hr>
     </div>
 </body>
 <script src="vendor/jquery-3.5.1.js"></script>
