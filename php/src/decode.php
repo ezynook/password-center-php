@@ -29,7 +29,6 @@
   ?>
 </code>
 <body>
-    <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">
         <form action="" method="POST" autocomplete="off">
             <div class="input">

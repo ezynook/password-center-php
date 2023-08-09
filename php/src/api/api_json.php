@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
 require '../include/db.php';
 
 if (isset($_GET['customer']) && $_GET['customer'] != ""){
@@ -19,7 +20,7 @@ $query = mysqli_query($conn, $sql);
 $group_items = array();
 
   foreach($query as $items){
-      $group_items[$items['customer']][] = $items;
+      $group_items[trim($items['customer'])][] = $items;
   }
   $res = json_encode($group_items);
   echo $res;

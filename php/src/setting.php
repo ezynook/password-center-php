@@ -45,7 +45,6 @@
 </code>
 
 <body>
-    <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">
         <?php if (isset($msg)){echo $msg;} ?>
         <form action="" method="post">

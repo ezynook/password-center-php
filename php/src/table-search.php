@@ -32,7 +32,6 @@
 </code>
 
 <body>
-    <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">
         <?php if(isset($alert)){echo $alert;} ?>
         <div class="alert-message warning">

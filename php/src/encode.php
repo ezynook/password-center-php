@@ -29,7 +29,6 @@
 </code>
 
 <body>
-    <?php include 'menu.php'; ?>
     <div class="container fade" style="margin-top: 50px;">
         <?php if(!empty($msg2)){echo $msg2;} ?>
         <form action="" method="POST" autocomplete="off" id="form1" name="form1">
